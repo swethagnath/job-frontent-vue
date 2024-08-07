@@ -58,9 +58,15 @@
             <!-- Mobile menu, show/hide based on menu state. -->
             <div v-if="isMenuOpen" class="sm:hidden" id="mobile-menu">
                 <div class="flex flex-col items-center px-2 pt-2 pb-3 space-y-1">
-                    <RouterLink :to="{name: 'home'}" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Home</RouterLink>
-                    <RouterLink :to="{name: 'jobs'}" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Jobs</RouterLink>
-                    <RouterLink :to="{name: 'add-job'}" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Add Jobs</RouterLink>
+                    <div v-if="authStore.user">
+                        <RouterLink :to="{name: 'home'}" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Home</RouterLink>
+                        <RouterLink :to="{name: 'jobs'}" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Jobs</RouterLink>
+                        <RouterLink :to="{name: 'add-job'}" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Add Jobs</RouterLink>
+                    </div>
+                    <div v-else>
+                        <RouterLink to="/login" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Login</RouterLink>
+                        <RouterLink to="/register" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Register</RouterLink>
+                    </div>
                 </div>
             </div>
         </nav> 
